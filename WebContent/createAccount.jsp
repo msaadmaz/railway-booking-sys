@@ -20,8 +20,29 @@
 	    Statement stmt = con.createStatement();
 	
 	    // Get parameters from createAccountForm.jsp
-	    String username = request.getParameter("username");   
+	    String username = request.getParameter("username");
+	    
+	    if (username.equals("")) {
+	    	out.println("You must input a username <a href='createAccountForm.jsp'>try again</a>");
+   			return;
+	    } else if (username.contains(" ")) {
+    	  out.println("Your username cannot contain spaces <a href='createAccountForm.jsp'>try again</a>");
+ 			  return;
+      }
+	    
 	    String password = request.getParameter("password");
+    			  
+	    if (password.equals("")) {
+        out.println("You must input a password <a href='createAccountForm.jsp'>try again</a>");
+        return;
+      } else if (password.contains(" ")) {
+        out.println("Your password cannot contain spaces <a href='createAccountForm.jsp'>try again</a>");
+     		return;
+      } else if (password.length() <= 3) {
+    	  out.println("Your password is too short <a href='createAccountForm.jsp'>try again</a>");
+ 			  return;
+      }
+    			  
       String firstName = request.getParameter("firstName");     
       String lastName = request.getParameter("lastName");     
       String email = request.getParameter("email");     
