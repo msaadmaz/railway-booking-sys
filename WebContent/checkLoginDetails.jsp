@@ -4,7 +4,7 @@
 <%@ page import="javax.servlet.http.*,javax.servlet.*"%>
 
 <%
-		//Get parameters from login.jsp
+		// Get parameters from login.jsp
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
     
@@ -29,6 +29,5 @@
     }
     
     st.close();
-    
     con.close();
 %>
