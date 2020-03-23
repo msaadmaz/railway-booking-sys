@@ -11,6 +11,7 @@
   </head>
   <body>
     <%
+      // TODO: check that username does not already exsit
 	    // Get the database connection
 	    ApplicationDB db = new ApplicationDB();
 	    Connection con = db.getConnection();
@@ -19,7 +20,7 @@
 	    Statement stmt = con.createStatement();
 	
 	    // Get parameters from createAccountForm.jsp
-	    String username = request.getParameter("username");	    
+	    String username = request.getParameter("username");    
 	    String password = request.getParameter("password");
       String firstName = request.getParameter("firstName");     
       String lastName = request.getParameter("lastName");     
@@ -29,6 +30,8 @@
       String city = request.getParameter("city");     
       String state = request.getParameter("state");     
       int zip = Integer.valueOf(request.getParameter("zip"));
+      
+      // checks
 	    
 	    // Make an insert statement for the User table:
       String insert = "INSERT INTO Customer(last_name, first_name, phone_num, street, city, state, zip, email, username, password)"
