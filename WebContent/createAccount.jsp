@@ -62,8 +62,7 @@
 	    db.closeConnection(con);
 	    
 	    // go back to login page
-	    RequestDispatcher dispatcher = request.getRequestDispatcher("login.jsp");
-	    dispatcher.forward(request, response);
+	    response.sendRedirect("login.jsp");
     %>
   </body>
 </html>

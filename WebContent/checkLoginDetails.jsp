@@ -18,13 +18,14 @@
     ResultSet rs;
     rs = st.executeQuery("SELECT * FROM Customer where username='" + username + "' AND password='" + password + "'");
     
+    
     if (rs.next()) {
-        session.setAttribute("user", username); // the username will be stored in the session
-        out.println("welcome " + username);
-        out.println("<a href='logout.jsp'>Log out</a>");
-        response.sendRedirect("success.jsp");
+	    session.setAttribute("user", username); // the username will be stored in the session
+	    out.println("welcome " + username);
+	    out.println("<a href='logout.jsp'>Log out</a>");
+	    response.sendRedirect("success.jsp");
     } else {
-        out.println("Invalid password <a href='login.jsp'>try again</a>");
+   	  out.println("Invalid password <a href='login.jsp'>try again</a>");
     }
     
     st.close();
