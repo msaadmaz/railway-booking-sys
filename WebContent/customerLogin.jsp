@@ -1,17 +1,23 @@
 <!DOCTYPE html>
 <html>
-   <head>
-      <title>Train Database</title>
-   </head>
-   <body>
-     <form action="checkLoginDetails.jsp" method="POST">
-       Username: <input type="text" name="username"/> <br/>
-       Password: <input type="password" name="password"/> <br/>
-       <button type="submit">Submit</button>
-     </form>
-     
-     <form action="createAccountForm.jsp">
-      <button type="submit">Create an account</button>
-     </form>
-   </body>
+	<head>
+	   <title>Train Database</title>
+	   <link rel="stylesheet" type="text/css" href="css/main.css">
+	</head>
+	
+	<body>
+	  <form action="checkLoginDetails.jsp" method="POST">
+	    <label for="username">Username</label>
+	    <input id="username" name="username" type="text" class="text-input" />
+	    <br />
+	    
+	    <label for="password">Password</label>
+	    <input id="password" name="password" type="password" class="text-input" />
+	    <br />
+	    
+	    <button type="submit">Submit</button>
+	  </form>
+	  
+	  <a href="createAccountForm.jsp" class="gray">Create Account</a>
+	</body>
 </html>
