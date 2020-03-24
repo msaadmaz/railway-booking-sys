@@ -2,9 +2,9 @@
 <html>
    <head>
       <title>Railway Booking System Login</title>
-      <link rel="stylesheet" href="css/main.css" />
+      <link rel="stylesheet" type="text/css" href="css/main.css">
    </head>
    <body>
-     <a class="green-button" href="customerLogin.jsp">Customer Login</a>
+     <a href="customerLogin.jsp" class="gray-button">Customer Login</a>
    </body>
 </html>
