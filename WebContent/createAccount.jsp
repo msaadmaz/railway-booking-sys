@@ -11,7 +11,6 @@
   </head>
   <body>
     <%
-      // TODO: check that username does not already exsit
 	    // Get the database connection
 	    ApplicationDB db = new ApplicationDB();
 	    Connection con = db.getConnection();

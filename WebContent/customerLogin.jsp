@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
 	<head>
-	   <title>Train Database</title>
-	   <link rel="stylesheet" type="text/css" href="css/main.css">
+	   <title>JJMT Railways</title>
+     <link rel="stylesheet" type="text/css" href="css/main.css">
 	</head>
 	
 	<body>
@@ -15,9 +15,9 @@
 	    <input id="password" name="password" type="password" class="text-input" />
 	    <br />
 	    
-	    <button type="submit">Submit</button>
+	    <button type="submit" class="gray-button">Submit</button>
 	  </form>
 	  
-	  <a href="createAccountForm.jsp" class="gray">Create Account</a>
+	  <a href="createAccountForm.jsp" class="gray-button">Create Account</a>
 	</body>
 </html>
