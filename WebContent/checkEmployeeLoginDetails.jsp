@@ -5,7 +5,8 @@
 
 <%
 		// Get parameters from login.jsp
-		String ssn = request.getParameter("ssn");
+		String username = request.getParameter("username");
+		String password = request.getParameter("password");
     
     Class.forName("com.mysql.jdbc.Driver");
     
@@ -15,15 +16,15 @@
     Statement st = con.createStatement();
     
     ResultSet rs;
-    rs = st.executeQuery("SELECT * FROM Employees where ssn='" + ssn + "'");
+    rs = st.executeQuery("SELECT * FROM Customer where username='" + username + "' AND password='" + password + "'");
     
     if (rs.next()) {
-	    session.setAttribute("ssn", ssn); // the ssn will be stored in the session
-	    out.println("welcome " + ssn);
+	    session.setAttribute("user", username); // the username will be stored in the session
+	    out.println("welcome " + username);
 	    out.println("<a href='logout.jsp'>Log out</a>");
-	    response.sendRedirect("employeeMainPage.jsp");
+	    response.sendRedirect("customerMainPage.jsp");
     } else {
-   	  out.println("Invalid login <a href='login.jsp'>try again</a>");
+   	  out.println("Invalid password <a href='login.jsp'>try again</a>");
     }
     
     st.close();
