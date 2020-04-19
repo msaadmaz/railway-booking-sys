@@ -11,7 +11,6 @@
   </head>
   <body>
     <%
-      // TODO: check that username does not already exsit
 	    // Get the database connection
 	    ApplicationDB db = new ApplicationDB();
 	    Connection con = db.getConnection();
@@ -43,16 +42,78 @@
  			  return;
       }
     			  
-      String firstName = request.getParameter("firstName");     
-      String lastName = request.getParameter("lastName");     
-      String email = request.getParameter("email");     
-      String phone = request.getParameter("phone");     
-      String street = request.getParameter("street");     
-      String city = request.getParameter("city");     
-      String state = request.getParameter("state");     
-      int zip = Integer.valueOf(request.getParameter("zip"));
+      String firstName = request.getParameter("firstName");
+    	
+      if (firstName.equals("")) {
+        out.println("You must input your first name <a href='createAccountForm.jsp'>try again</a>");
+        return;
+      }
       
-      // checks
+      String lastName = request.getParameter("lastName");
+
+      if (lastName.equals("")) {
+        out.println("You must input your last name <a href='createAccountForm.jsp'>try again</a>");
+        return;
+      }
+      
+      String email = request.getParameter("email");     
+
+      if (email.equals("")) {
+        out.println("You must input a valid email address <a href='createAccountForm.jsp'>try again</a>");
+        return;
+      }
+      
+      String phone = request.getParameter("phone");     
+      
+      if (phone.equals("")) {
+        out.println("You must input a valid phone number <a href='createAccountForm.jsp'>try again</a>");
+        return;
+      }
+      
+      for (int i = 0; i < phone.length(); i++) {
+    	  if (Character.isLetter(phone.charAt(i))) {
+    		  out.println("You must input a valid phone number <a href='createAccountForm.jsp'>try again</a>");
+    		  return;
+    	  }
+      }
+      
+      String street = request.getParameter("street");     
+
+      if (street.equals("")) {
+        out.println("You must input your street name <a href='createAccountForm.jsp'>try again</a>");
+        return;
+      }
+      
+      String city = request.getParameter("city");     
+
+      if (city.equals("")) {
+        out.println("You must input your city <a href='createAccountForm.jsp'>try again</a>");
+        return;
+      }
+      
+      String state = request.getParameter("state");     
+
+      if (state.equals("")) {
+        out.println("You must input your state <a href='createAccountForm.jsp'>try again</a>");
+        return;
+      }
+      
+      String zipString = request.getParameter("zip");
+        		
+      if (zipString.equals("")) {
+        out.println("You must input your zip code <a href='createAccountForm.jsp'>try again</a>");
+        return;
+      }
+      
+      int zip;
+        		
+      try {
+    	  zip = Integer.valueOf(zipString); 
+      } catch (Exception e) {
+    	  out.println("You must input a valid zip code <a href='createAccountForm.jsp'>try again</a>");
+        return;
+      }
+      
       ResultSet rs;
       rs = stmt.executeQuery("SELECT * FROM Customer where username = '" + username + "'");
       
