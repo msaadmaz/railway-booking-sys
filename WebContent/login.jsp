@@ -11,7 +11,7 @@
      
      <div class="login-container">
 	     <a href="customerLogin.jsp" class="gray-button">Customer Login</a>
-	     <a href="" class="light-gray-button">Employee Login</a>
+	     <a href="employeeLogin.jsp" class="light-gray-button">Employee Login</a>
      </div>
      
      <div class="footer">
