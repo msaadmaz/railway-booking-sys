@@ -12,8 +12,9 @@
   
   <p>What would you like to do:</p>
   <ol>
-  	<li><a href = "Browse.jsp"></a>Browse for train schedules</li>
-  	<li><a href = "Make_Cancel_Reservation"></a>Create or Cancel Reservation</li>
+  	<li><a href = "Browse.jsp">Browse for train schedules</a></li>
+  	<li><a href = "Make_Cancel_Reservation">Create or Cancel Reservation</a></li>
+  	<li><a href = "customerService.jsp">Message Customer Service</a></li></li>
   	
   </ol>
   
