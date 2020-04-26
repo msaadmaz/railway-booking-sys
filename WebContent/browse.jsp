@@ -10,6 +10,6 @@
       <link rel="stylesheet" type="text/css" href="css/main.css">
    </head>
    <body>
-   	 <p>browse</p>
+   	 <h2>Search for train schedules</h2>
    </body>
 </html>
