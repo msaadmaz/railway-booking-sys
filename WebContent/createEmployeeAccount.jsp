@@ -13,8 +13,8 @@
     <%
 	    // Get the database connection
 	    ApplicationDB db = new ApplicationDB();
+    
 	    Connection con = db.getConnection();
-	
 	    // Create a SQL statement
 	    Statement stmt = con.createStatement();
 	
@@ -22,124 +22,78 @@
 	    String username = request.getParameter("username");
 	    
 	    if (username.equals("")) {
-	    	out.println("You must input a username <a href='createAccountForm.jsp'>try again</a>");
+	    	out.println("You must input a username <a href='createEmployeeAcountForm.jsp'>try again</a>");
    			return;
 	    } else if (username.contains(" ")) {
-    	  out.println("Your username cannot contain spaces <a href='createAccountForm.jsp'>try again</a>");
+    	  out.println("Your username cannot contain spaces <a href='createEmployeeAcountForm.jsp'>try again</a>");
  			  return;
       }
 	    
 	    String password = request.getParameter("password");
     			  
 	    if (password.equals("")) {
-        out.println("You must input a password <a href='createAccountForm.jsp'>try again</a>");
+        out.println("You must input a password <a href='createEmployeeAcountForm.jsp'>try again</a>");
         return;
       } else if (password.contains(" ")) {
-        out.println("Your password cannot contain spaces <a href='createAccountForm.jsp'>try again</a>");
+        out.println("Your password cannot contain spaces <a href='createEmployeeAcountForm.jsp'>try again</a>");
      		return;
       } else if (password.length() <= 3) {
-    	  out.println("Your password is too short <a href='createAccountForm.jsp'>try again</a>");
+    	  out.println("Your password is too short <a href='createEmployeeAcountForm.jsp'>try again</a>");
  			  return;
       }
     			  
       String firstName = request.getParameter("firstName");
     	
       if (firstName.equals("")) {
-        out.println("You must input your first name <a href='createAccountForm.jsp'>try again</a>");
+        out.println("You must input your first name <a href='createEmployeeAcountForm.jsp'>try again</a>");
         return;
       }
       
       String lastName = request.getParameter("lastName");
 
       if (lastName.equals("")) {
-        out.println("You must input your last name <a href='createAccountForm.jsp'>try again</a>");
+        out.println("You must input your last name <a href='createEmployeeAcountForm.jsp'>try again</a>");
         return;
       }
-      
-      String email = request.getParameter("email");     
+      String ssn = request.getParameter("ssn");
+      if (ssn.length()!=11){
+          out.println("You must input a valid ssn(11 characters) <a href='createEmployeeAcountForm.jsp'>try again</a>");
 
-      if (email.equals("")) {
-        out.println("You must input a valid email address <a href='createAccountForm.jsp'>try again</a>");
-        return;
       }
       
-      String phone = request.getParameter("phone");     
-      
-      if (phone.equals("")) {
-        out.println("You must input a valid phone number <a href='createAccountForm.jsp'>try again</a>");
-        return;
-      }
-      
-      for (int i = 0; i < phone.length(); i++) {
-    	  if (Character.isLetter(phone.charAt(i))) {
-    		  out.println("You must input a valid phone number <a href='createAccountForm.jsp'>try again</a>");
-    		  return;
-    	  }
-      }
-      
-      String street = request.getParameter("street");     
-
-      if (street.equals("")) {
-        out.println("You must input your street name <a href='createAccountForm.jsp'>try again</a>");
-        return;
-      }
-      
-      String city = request.getParameter("city");     
-
-      if (city.equals("")) {
-        out.println("You must input your city <a href='createAccountForm.jsp'>try again</a>");
-        return;
-      }
-      
-      String state = request.getParameter("state");     
-
-      if (state.equals("")) {
-        out.println("You must input your state <a href='createAccountForm.jsp'>try again</a>");
-        return;
-      }
-      
-      String zipString = request.getParameter("zip");
-        		
-      if (zipString.equals("")) {
-        out.println("You must input your zip code <a href='createAccountForm.jsp'>try again</a>");
-        return;
-      }
-      
-      int zip;
-        		
-      try {
-    	  zip = Integer.valueOf(zipString); 
-      } catch (Exception e) {
-    	  out.println("You must input a valid zip code <a href='createAccountForm.jsp'>try again</a>");
-        return;
-      }
       
       ResultSet rs;
-      rs = stmt.executeQuery("SELECT * FROM Customer where username = '" + username + "'");
+      rs = stmt.executeQuery("SELECT * FROM Employees where username = '" + username + "'");
       
       if (rs.next()) {
     	  rs.close();
     	  
-        out.println("Username already exists <a href='createAccountForm.jsp'>try again</a>");
-      } else {
+        out.println("Username already exists <a href='createEmployeeAcountForm.jsp'>try again</a>");
+      } 
+      ResultSet rs2; 
+      rs2 = stmt.executeQuery("SELECT * FROM Employees where ssn = '" + ssn + "'");
+      if (rs2.next()) {
+    	  rs2.close();
+    	  
+        out.println("SSN already exists <a href='createEmployeeAcountForm.jsp'>try again</a>");
+      }
+      
+      else {
     	  // Make an insert statement for the User table:
-        String insert = "INSERT INTO Customer(last_name, first_name, phone_num, street, city, state, zip, email, username, password)"
-            + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String insert = "INSERT INTO Employees(username, password, isManager, first_name, last_name, ssn)"
+            + "VALUES (?, ?, ?, ?, ?, ?)";
         
         // Create a Prepared SQL statement allowing you to introduce the parameters of the query
         PreparedStatement ps = con.prepareStatement(insert);
 
         // Add parameters of the query. Start with 1, the 0-parameter is the INSERT statement itself
-        ps.setString(1, lastName);
-        ps.setString(2, firstName);
-        ps.setString(3, phone);
-        ps.setString(4, street);
-        ps.setString(5, city);
-        ps.setString(6, state);
-        ps.setInt(7, zip);
-        ps.setString(8, email);
-        ps.setString(9, username);
-        ps.setString(10, password);
+        ps.setString(1, username);
+        ps.setString(2, password);
+        ps.setInt(3, 0);
+        ps.setString(4, firstName);
+        ps.setString(5,lastName);
+        ps.setString(6, ssn);
+        
         
         // Run the query against the DB
         ps.executeUpdate();
@@ -151,7 +105,7 @@
         db.closeConnection(con);
         
         // go back to login page
-        response.sendRedirect("login.jsp");
+        response.sendRedirect("adminMainPage.jsp");
       }
     %>
   </body>

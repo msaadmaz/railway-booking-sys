@@ -14,12 +14,13 @@
 	    // Get the database connection
 	    ApplicationDB db = new ApplicationDB();
 	    Connection con = db.getConnection();
-	
+		
 	    // Create a SQL statement
 	    Statement stmt = con.createStatement();
 	
 	    // Get parameters from createAccountForm.jsp
 	    String username = request.getParameter("username");
+	    
 	    
 	    if (username.equals("")) {
 	    	out.println("You must input a username <a href='createAccountForm.jsp'>try again</a>");
