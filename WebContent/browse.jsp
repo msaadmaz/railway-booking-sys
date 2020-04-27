@@ -25,6 +25,10 @@
     table, th, td {
       border: 1px solid black;
     }
+    
+    th, td {
+      padding: 5px;
+    }
   </style>
 </head>
 
@@ -33,12 +37,24 @@
     
       ApplicationDB db = new ApplicationDB();
       Connection con = db.getConnection();
-      Statement stTrip = con.createStatement();
-      Statement stRoute = con.createStatement();
+      Statement st = con.createStatement();
       
-      // get all trips and their transit line names
-      String showAllTripsQuery = "SELECT t.id, r.transit_line_name, t.date FROM trip t, route r WHERE t.route_id = r.id;";
-      ResultSet rs = stTrip.executeQuery(showAllTripsQuery);
+      String s1 = "CREATE TEMPORARY TABLE s1 SELECT * FROM station;";
+      String s2 = "CREATE TEMPORARY TABLE s2 SELECT * FROM station;";
+      
+      // update (create) temporary tables
+      st.executeUpdate(s1);
+      st.executeUpdate(s2);
+      
+      String s3 = "SELECT t.id, r.transit_line_name, s1.name AS 'origin_station', s2.name AS 'destination_station', t.date ";
+      String s4 = "FROM trip t, route r, s1, s2 ";
+      String s5 = "WHERE t.route_id = r.id ";
+      String s6 = "AND r.origin_station_id = s1.id ";
+      String s7 = "AND r.destination_station_id = s2.id;";
+      
+      // query trips and their transit line names and origin and destination stations
+      String showAllTripsQuery = s3 + s4 + s5 + s6 + s7;
+      ResultSet rs = st.executeQuery(showAllTripsQuery);
   %>
 
   <h2>Search for train schedules</h2>
@@ -47,6 +63,8 @@
     <tr>
       <td>ID</td>
       <td>Transit Line</td>
+      <td>Origin Station</td>
+      <td>Destination Station</td>
       <td>Date</td>
     </tr>
     
@@ -54,13 +72,15 @@
           <tr>
             <td><%= rs.getInt("id") %></td>
             <td><%= rs.getString("transit_line_name") %></td>
+            <td><%= rs.getString("origin_station") %></td>
+            <td><%= rs.getString("destination_station") %></td>
             <td><%= rs.getDate("date") %></td>
           </tr>
     <%  } %>
   </table>
   
   <%  rs.close();
-      stTrip.close();
+      st.close();
       con.close();
   %>
 </body>
