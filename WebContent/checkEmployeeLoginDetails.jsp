@@ -16,7 +16,7 @@
     Statement st = con.createStatement();
     
     ResultSet rs;
-    rs = st.executeQuery("SELECT * FROM Employees where username='" + username + "' AND password='" + password + "'");
+    rs = st.executeQuery("SELECT * FROM employee where username='" + username + "' AND password='" + password + "'");
     
     if (rs.next()) {
 	    session.setAttribute("user", username); // the username will be stored in the session

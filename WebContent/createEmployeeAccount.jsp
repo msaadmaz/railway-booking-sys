@@ -115,7 +115,7 @@
       }
       
       ResultSet rs;
-      rs = stmt.executeQuery("SELECT * FROM Customer where username = '" + username + "'");
+      rs = stmt.executeQuery("SELECT * FROM employee where username = '" + username + "'");
       
       if (rs.next()) {
     	  rs.close();
@@ -123,8 +123,8 @@
         out.println("Username already exists <a href='createAccountForm.jsp'>try again</a>");
       } else {
     	  // Make an insert statement for the User table:
-        String insert = "INSERT INTO Customer(last_name, first_name, phone_num, street, city, state, zip, email, username, password)"
-            + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String insert = "INSERT INTO employee()"
+            + "VALUES ()";
         
         // Create a Prepared SQL statement allowing you to introduce the parameters of the query
         PreparedStatement ps = con.prepareStatement(insert);

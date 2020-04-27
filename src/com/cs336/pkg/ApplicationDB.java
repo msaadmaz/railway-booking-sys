@@ -11,9 +11,9 @@ public class ApplicationDB {
 		
 	}
 
-	public Connection getConnection() {		
+	public Connection getConnection() {
 		//Create a connection string
-		String connectionUrl = "jdbc:mysql://cs336db.cebcm7xuzj3m.us-east-2.rds.amazonaws.com:3306/cs336db";
+		String connectionUrl = "jdbc:mysql://cs336db.cebcm7xuzj3m.us-east-2.rds.amazonaws.com:3306/jjmtrailways";
 		Connection connection = null;
 		
 		try {

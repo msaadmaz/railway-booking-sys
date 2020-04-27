@@ -16,7 +16,7 @@
     Statement st = con.createStatement();
     
     ResultSet rs;
-    rs = st.executeQuery("SELECT * FROM Customer where username='" + username + "' AND password='" + password + "'");
+    rs = st.executeQuery("SELECT * FROM customer where username='" + username + "' AND password='" + password + "'");
     
     
     if (rs.next()) {
@@ -28,6 +28,7 @@
    	  out.println("Invalid password <a href='login.jsp'>try again</a>");
     }
     
+    rs.close();
     st.close();
     con.close();
 %>
