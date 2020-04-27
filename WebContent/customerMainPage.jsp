@@ -19,7 +19,7 @@
   <ol>
   	<li><a href="browse.jsp">Browse for train schedules</a></li>
   	<li><a href="makeCancelReservation.jsp">Create or Cancel Reservation</a></li>
-  	<li><a href="viewMessages.jsp">View message</a></li>
+  	<li><a href="customerService.jsp">Customer Service</a></li>
   </ol>
   
 </body>

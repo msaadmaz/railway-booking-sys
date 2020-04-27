@@ -17,7 +17,7 @@
 	String search = request.getParameter("search");
 
 	if( search.equals("") ){
-		out.println("You must input  <a href='customerService.jsp'>try again</a>");
+		out.println("You must input a question. <a href='customerService.jsp'>try again</a>");
 	} else {
 		Class.forName("com.mysql.jdbc.Driver");
 
