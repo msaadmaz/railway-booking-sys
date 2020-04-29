@@ -34,7 +34,6 @@
 
 <body>
   <%  Class.forName("com.mysql.jdbc.Driver");
-      int x = 3;
       ApplicationDB db = new ApplicationDB();
       Connection con = db.getConnection();
       Statement st = con.createStatement();
@@ -46,7 +45,7 @@
       
       // TODO: query only future trips, exclude past
       
-      String s2 = "SELECT t.id, r.transit_line_name, r.depart_time, s1.name AS 'origin_station', s2.name AS 'destination_station', r.arrival_time, t.date ";
+      String s2 = "SELECT t.id, r.transit_line_name, r.depart_time, s1.name AS 'origin_station', s2.name AS 'destination_station', r.arrival_time, t.date, r.id AS route_id ";
       String s3 = "FROM trip t, route r, station s1, s2 ";
       String s4 = "WHERE t.route_id = r.id ";
       String s5 = "AND r.origin_station_id = s1.id ";
@@ -59,6 +58,14 @@
   %>
 
   <h2>Search for train schedules</h2>
+  
+  <form action="" method="POST">
+    <label for="origin-station">Origin Station</label>
+    <input id="origin-station" name=origin-station type="text" class="text-input" />
+    <br />
+    
+    <button type="submit" class="gray-button">Submit</button>
+  </form>
 
   <table>
     <tr>
@@ -82,7 +89,7 @@
             <td><%= rs.getString("destination_station") %></td>
             <td><%= rs.getString("arrival_time") %></td>
             <td>
-              <a href="viewStops.jsp?routeId=<%= rs.getInt("id") %>">View Route and Stops</a>
+              <a href="viewStops.jsp?routeId=<%= rs.getInt("route_id") %>">View Route and Stops</a>
             </td>
           </tr>
     <%  } %>

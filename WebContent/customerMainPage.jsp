@@ -7,16 +7,16 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>Insert title here</title>
+	<title>Home</title>
 </head>
 <body>
-  <h1>User Main Page</h1>
-  <p>Congratulations, you have logged in!</p>
+  <h1>Home</h1>
+  <p>Hello, <%= session.getAttribute("user") %>!</p>
   <br>
   
   <p>What would you like to do:</p>
   <ol>
-  	<li><a href="browse.jsp">View train schedules</a></li>
+  	<li><a href="searchTrainSchedules.jsp">Search for train schedules</a></li>
   	<li><a href="makeCancelReservation.jsp">Create or cancel reservation</a></li>
   	<li><a href="viewMessages.jsp">View messages</a></li>
   </ol>
