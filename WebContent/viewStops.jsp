@@ -23,13 +23,16 @@
 </head>
 
 <body>
-  <%  Class.forName("com.mysql.jdbc.Driver");
+  <%  out.println("test");
+      //String routeId = request.getParamter("routeId");
+      //out.println(routeId);
+      Class.forName("com.mysql.jdbc.Driver");
     
       ApplicationDB db = new ApplicationDB();
       Connection con = db.getConnection();
       Statement st = con.createStatement();
       
-      ResultSet rs = st.executeQuery("SELECT DISTINCT s.name FROM station s, stops_at sa WHERE sa.route_id = 2 AND sa.station_id = s.id;");
+      ResultSet rs = st.executeQuery("SELECT s.name FROM station s, stops_at sa WHERE sa.route_id = 2 AND sa.station_id = s.id ORDER BY sa.arrival_time ASC;");
   %>
 
   <h2>Stops</h2>
@@ -41,7 +44,7 @@
     
     <%  while (rs.next()) { %>
           <tr>
-            <td><%= rs.getInt("id") %></td>
+            <td>test</td>
           </tr>
     <%  } %>
   </table>

@@ -34,7 +34,7 @@
 
 <body>
   <%  Class.forName("com.mysql.jdbc.Driver");
-    
+      int x = 3;
       ApplicationDB db = new ApplicationDB();
       Connection con = db.getConnection();
       Statement st = con.createStatement();
@@ -69,7 +69,7 @@
       <th>Origin Station</th>
       <th>Destination Station</th>
       <th>Arrival Time</th>
-      <th>View Stops</th>
+      <th>View Route</th>
     </tr>
     
     <%  while (rs.next()) { %>
@@ -82,7 +82,7 @@
             <td><%= rs.getString("destination_station") %></td>
             <td><%= rs.getString("arrival_time") %></td>
             <td>
-              <a href="viewStops.jsp">View Stops</a>
+              <a href="viewStops.jsp?routeId=<%= rs.getInt("id") %>">View Route and Stops</a>
             </td>
           </tr>
     <%  } %>
