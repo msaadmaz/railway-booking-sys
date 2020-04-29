@@ -290,26 +290,44 @@ CREATE TABLE reservation (
 
 INSERT INTO reservation
 VALUES  (1, 'test', 1, 1, 2, 12.0, 1, 'FIRST',      '2020-04-15', 2.0, 'test'),
-        (2, 'test', 2, 1, 2, 12.0, 1, 'FIRST',      '2020-04-17', 2.0, 'test'),
-        (3, 'test', 3, 1, 2, 12.0, 1, 'ECONOMY',    '2020-04-09', 2.0, 'test'),
-        (4, 'test', 4, 1, 2, 12.0, 1, 'ECONOMY',    '2020-04-15', 2.0, NULL),
-        (5, 'test', 5, 1, 2, 12.0, 1, 'ECONOMY',    '2020-04-15', 2.0, NULL),
+        (2, 'test', 2, 1, 2, 14.0, 1, 'FIRST',      '2020-04-17', 2.0, 'test'),
+        (3, 'test', 3, 1, 2, 16.0, 1, 'ECONOMY',    '2020-04-09', 2.0, 'test'),
+        (4, 'test', 4, 1, 2, 12.0, 1, 'SECOND',     '2020-04-15', 2.0, NULL),
+        (5, 'test', 5, 1, 2, 14.0, 1, 'ECONOMY',    '2020-04-15', 2.0, NULL),
 
 
-        (6, 'customer1', 1, 1, 2, 10.0, 2, 'FIRST',     '2020-04-09', 2.0, 'test'),
-        (7, 'customer2', 1, 1, 2, 10.0, 3, 'FIRST',     '2020-04-12', 2.0, 'employee1'),
-        (8, 'customer3', 1, 1, 2, 10.0, 4, 'ECONOMY',   '2020-04-12', 2.0, 'employee2'),
-        (9, 'customer4', 1, 1, 2, 10.0, 5, 'ECONOMY',   '2020-04-12', 2.0, NULL),
+        (6, 'customer1', 1, 1, 2, 8.0, 2,  'FIRST',     '2020-04-09', 2.0, 'test'),
+        (7, 'customer2', 1, 1, 2, 12.0, 3, 'FIRST',     '2020-04-12', 2.0, 'employee1'),
+        (8, 'customer3', 1, 1, 2, 15.0, 4, 'ECONOMY',   '2020-04-12', 2.0, 'employee2'),
+        (9, 'customer4', 1, 1, 2, 13.0, 5, 'ECONOMY',   '2020-04-12', 2.0, NULL),
         
-        (10, 'customer1', 2, 1, 2, 10.0, 2, 'ECONOMY',     '2020-04-09', 2.0, 'test'),
-        (11, 'customer2', 2, 1, 2, 10.0, 3, 'FIRST',     '2020-04-12', 2.0, 'test'),
-        (12, 'customer3', 2, 1, 2, 10.0, 4, 'ECONOMY',   '2020-04-17', 2.0, 'employee2'),
-        (13, 'customer4', 2, 1, 2, 10.0, 5, 'ECONOMY',   '2020-04-12', 2.0, NULL),
+        (10, 'customer1', 2, 1, 2, 23.0, 2, 'ECONOMY',   '2020-04-09', 2.0, 'test'),
+        (11, 'customer2', 2, 1, 2, 23.0, 3, 'FIRST',     '2020-04-12', 2.0, 'test'),
+        (12, 'customer3', 2, 1, 2, 14.0, 4, 'SECOND',    '2020-04-17', 2.0, 'employee2'),
+        (13, 'customer4', 2, 1, 2, 11.0, 5, 'ECONOMY',   '2020-04-12', 2.0, NULL),
         
-        (14, 'customer1', 3, 1, 2, 10.0, 2, 'FIRST',     '2020-04-09', 2.0, 'test'),
-        (15, 'customer2', 3, 1, 2, 10.0, 3, 'FIRST',     '2020-04-15', 2.0, 'test'),
-        (16, 'customer3', 3, 1, 2, 10.0, 4, 'ECONOMY',   '2020-04-16', 2.0, 'employee4'),
-        (17, 'customer4', 3, 1, 2, 10.0, 5, 'FIRST',   '2020-04-16', 2.0, NULL);
+        (14, 'customer1', 3, 1, 2, 15.0, 2, 'FIRST',     '2020-04-09', 2.0, 'test'),
+        (15, 'customer2', 3, 1, 2, 17.0, 3, 'SECOND',    '2020-04-15', 2.0, 'test'),
+        (16, 'customer3', 3, 1, 2, 23.0, 4, 'ECONOMY',   '2020-04-16', 2.0, 'employee4'),
+        (17, 'customer4', 3, 1, 2, 19.0, 5, 'FIRST',     '2020-04-16', 2.0, NULL),
+        
+        (18, 'customer5', 28, 1, 1, 17.0, 1, 'FIRST',   '2020-03-17', 2.0, 'employee5'),
+        (19, 'test',      28, 1, 1, 25.0, 2, 'SECOND',  '2020-04-18', 2.0, 'employee1'),
+        (20, 'customer3', 28, 1, 1, 11.0, 3, 'FIRST',   '2020-03-17', 2.0, NULL),
+        (21, 'customer7', 28, 1, 1, 13.0, 4, 'SECOND',  '2020-03-17', 2.0, 'employee2'),
+        (22, 'customer9', 28, 1, 1, 10.0, 5, 'ECONOMY', '2020-03-17', 2.0, NULL),
+        
+        (23, 'customer1', 40, 1, 1, 10.0, 1, 'FIRST',   '2020-03-07', 2.0, 'employee4'),
+        (24, 'customer2', 40, 1, 1, 10.0, 2, 'SECOND',  '2020-04-16', 2.0, 'employee1'),
+        (25, 'customer7', 40, 1, 1, 12.0, 3, 'FIRST',   '2020-02-23', 2.0,  NULL),
+        (26, 'customer3', 40, 1, 1, 15.0, 4, 'SECOND',  '2020-01-28', 2.0, 'employee2'),
+        (27, 'customer8', 40, 1, 1, 16.0, 5, 'ECONOMY', '2020-03-09', 2.0, NULL),
+        
+        (28, 'customer3', 50, 1, 1, 34.0, 1, 'FIRST',   '2020-04-07', 2.0, 'employee4'),
+        (29, 'customer4', 50, 1, 1, 36.0, 2, 'SECOND',  '2020-03-16', 2.0, NULL),
+        (30, 'customer9', 50, 1, 1, 12.0, 3, 'FIRST',   '2020-02-23', 2.0, 'employee1'),
+        (31, 'customer2', 50, 1, 1, 13.0, 4, 'SECOND',  '2019-11-28', 2.0, NULL),
+        (32, 'customer1', 50, 1, 1, 13.0, 5, 'ECONOMY', '2019-12-09', 2.0, 'employee3');
 
 CREATE TABLE message (
     id INT NOT NULL AUTO_INCREMENT,

@@ -39,21 +39,22 @@
       Connection con = db.getConnection();
       Statement st = con.createStatement();
       
-      String s1 = "CREATE TEMPORARY TABLE s1 SELECT * FROM station;";
-      String s2 = "CREATE TEMPORARY TABLE s2 SELECT * FROM station;";
+      String s1 = "CREATE TEMPORARY TABLE s2 SELECT * FROM station;";
       
       // update (create) temporary tables
       st.executeUpdate(s1);
-      st.executeUpdate(s2);
       
-      String s3 = "SELECT t.id, r.transit_line_name, s1.name AS 'origin_station', s2.name AS 'destination_station', t.date ";
-      String s4 = "FROM trip t, route r, s1, s2 ";
-      String s5 = "WHERE t.route_id = r.id ";
-      String s6 = "AND r.origin_station_id = s1.id ";
-      String s7 = "AND r.destination_station_id = s2.id;";
+      // TODO: query only future trips, exclude past
+      
+      String s2 = "SELECT t.id, r.transit_line_name, r.depart_time, s1.name AS 'origin_station', s2.name AS 'destination_station', r.arrival_time, t.date ";
+      String s3 = "FROM trip t, route r, station s1, s2 ";
+      String s4 = "WHERE t.route_id = r.id ";
+      String s5 = "AND r.origin_station_id = s1.id ";
+      String s6 = "AND r.destination_station_id = s2.id ";
+      String s7 = "GROUP BY t.date ";
       
       // query trips and their transit line names and origin and destination stations
-      String showAllTripsQuery = s3 + s4 + s5 + s6 + s7;
+      String showAllTripsQuery = s2 + s3 + s4 + s5 + s6 + s7;
       ResultSet rs = st.executeQuery(showAllTripsQuery);
   %>
 
@@ -61,20 +62,28 @@
 
   <table>
     <tr>
-      <td>ID</td>
-      <td>Transit Line</td>
-      <td>Origin Station</td>
-      <td>Destination Station</td>
-      <td>Date</td>
+      <th>ID</th>
+      <th>Date</th>
+      <th>Transit Line</th>
+      <th>Departure Time</th>
+      <th>Origin Station</th>
+      <th>Destination Station</th>
+      <th>Arrival Time</th>
+      <th>View Stops</th>
     </tr>
     
     <%  while (rs.next()) { %>
           <tr>
             <td><%= rs.getInt("id") %></td>
+            <td><%= rs.getDate("date") %></td>
             <td><%= rs.getString("transit_line_name") %></td>
+            <td><%= rs.getString("depart_time") %></td>
             <td><%= rs.getString("origin_station") %></td>
             <td><%= rs.getString("destination_station") %></td>
-            <td><%= rs.getDate("date") %></td>
+            <td><%= rs.getString("arrival_time") %></td>
+            <td>
+              <a href="viewStops.jsp">View Stops</a>
+            </td>
           </tr>
     <%  } %>
   </table>
