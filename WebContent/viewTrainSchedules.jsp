@@ -53,6 +53,7 @@
         
         // TODO: query only future trips, exclude past
         
+        
         String s2 = "SELECT t.id, r.transit_line_name, r.depart_time, s1.name AS 'origin_station', s2.name AS 'destination_station', r.arrival_time, t.date, r.id AS route_id ";
         String s3 = "FROM trip t, route r, station s1, s2 ";
         String s4 = "WHERE t.route_id = r.id ";
@@ -60,22 +61,15 @@
         String s6 = "AND r.origin_station_id = " + originId + " ";
         String s7 = "AND r.destination_station_id = s2.id ";
         String s8 = "AND r.destination_station_id = " + destinationId + " ";
-        String s9 = "GROUP BY t.date ";
+        String s9 = "AND t.date = '" + travelDate + "' ";
+        String s10 = "ORDER BY r.depart_time DESC";
         
         // query trips and their transit line names and origin and destination stations
-        String showAllTripsQuery = s2 + s3 + s4 + s5 + s6 + s7;
+        String showAllTripsQuery = s2 + s3 + s4 + s5 + s6 + s7 + s8 + s9 + s10;
         ResultSet rs = st.executeQuery(showAllTripsQuery);
     %>
   
-    <h2>Search for train schedules</h2>
-    
-    <form action="" method="POST">
-      <label for="origin-station">Origin Station</label>
-      <input id="origin-station" name=origin-station type="text" class="text-input" />
-      <br />
-      
-      <button type="submit" class="gray-button">Submit</button>
-    </form>
+    <h2>Train Schedules</h2>
   
     <table>
       <tr>

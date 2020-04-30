@@ -61,5 +61,7 @@
       
       <button type="submit" class="gray-button">Submit</button>
     </form>
+    
+    <a href="viewAllTrainSchedules.jsp">View all upcoming train schedules</a>
   </body>
 </html>
