@@ -38,22 +38,22 @@
       Connection con = db.getConnection();
       Statement st = con.createStatement();
       
-      String s1 = "CREATE TEMPORARY TABLE s2 SELECT * FROM station;";
+      String createTemp = "CREATE TEMPORARY TABLE s2 SELECT * FROM station;";
       
       // update (create) temporary tables
-      st.executeUpdate(s1);
+      st.executeUpdate(createTemp);
       
       // TODO: query only future trips, exclude past
       
-      String s2 = "SELECT t.id, r.transit_line_name, r.depart_time, s1.name AS 'origin_station', s2.name AS 'destination_station', r.arrival_time, t.date, r.id AS route_id ";
-      String s3 = "FROM trip t, route r, station s1, s2 ";
-      String s4 = "WHERE t.route_id = r.id ";
-      String s5 = "AND r.origin_station_id = s1.id ";
-      String s6 = "AND r.destination_station_id = s2.id ";
-      String s7 = "GROUP BY t.date ";
+      String q1 = "SELECT t.id, r.transit_line_name, r.depart_time, s1.name AS 'origin_station', s2.name AS 'destination_station', r.arrival_time, t.date, r.id AS route_id ";
+      String q2 = "FROM trip t, route r, station s1, s2 ";
+      String q3 = "WHERE t.route_id = r.id ";
+      String q4 = "AND r.origin_station_id = s1.id ";
+      String q5 = "AND r.destination_station_id = s2.id ";
+      String q6 = "GROUP BY t.date ";
       
       // query trips and their transit line names and origin and destination stations
-      String showAllTripsQuery = s2 + s3 + s4 + s5 + s6 + s7;
+      String showAllTripsQuery = q1 + q2 + q3 + q4 + q5 + q6;
       ResultSet rs = st.executeQuery(showAllTripsQuery);
   %>
 
