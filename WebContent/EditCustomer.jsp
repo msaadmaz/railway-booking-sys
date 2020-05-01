@@ -25,6 +25,7 @@
 	if (!rs.next()){
 		out.println("No such username in Database <a href = 'edit.jsp'> try again </a");				
 	}
+	else {
 	%>
 	<p> Here is the customer Data</p>
 	<ul>
@@ -67,6 +68,8 @@
     	<br />
     	<button type="submit" class="gray-button">Edit Account</button>
 	</form>
+	<%
+	}%>
 	</body>
 </html>
 	

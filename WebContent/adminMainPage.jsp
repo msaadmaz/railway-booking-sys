@@ -41,7 +41,7 @@
   			<br>
   			<li> <form action="CustomerReservation.jsp" method="POST">
   				 	<input name="Customer name" type="text" class="text-input" placeholder="Customer name" />
-  				 	<button type="submit" class="gray-button">Produce list with Customer Username</button>
+  				 	<button type="submit" class="gray-button">Produce list with Customer name</button>
   				</form>
   			</li>
   			
