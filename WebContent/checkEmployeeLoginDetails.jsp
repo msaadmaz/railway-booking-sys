@@ -19,7 +19,7 @@
     Statement st2 = con.createStatement();
     
     ResultSet rs;
-    rs = st.executeQuery("SELECT * FROM Employees where username='" + username + "' AND password='" + password + "'");
+    rs = st.executeQuery("SELECT * FROM employee where username='" + username + "' AND password='" + password + "'");
     
     if (rs.next()) {
 	    session.setAttribute("user", username); // the username will be stored in the session
@@ -38,7 +38,7 @@
 	    // check if manager/admin account
 	    // SELECT e.isManager FROM Employees e WHERE e.username = username
 	    
-	    if (rs.getInt("isManager") == 0) {
+	    if (rs.getInt("is_manager") == 0) {
 	    	response.sendRedirect("employeeMainPage.jsp");
 	    } else {
 	    	response.sendRedirect("adminMainPage.jsp");

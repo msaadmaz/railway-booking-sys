@@ -10,13 +10,16 @@
 </head>
 
 <body>
-  <form action="createAccount.jsp" method="POST">
+  <form action="createEmployeeAccount.jsp" method="POST">
     <input name="firstName" type="text" class="text-input" placeholder="First name" />
     <br />
     <input name="lastName" type="text" class="text-input" placeholder="Last name" />
     <br />
     <input name="ssn" type="text" class="text-input" placeholder="SSN" />
     <br />
+    <input name="username" type = "text" class = "text-input" placeholder = "username">
+    <br />
+    <input name="password" type = "text" class = "text-input" placeholder = "password">
     <button type="submit" class="gray-button">Create Account</button>
   </form>
 </body>
