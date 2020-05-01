@@ -34,7 +34,7 @@
       
       String customerUsername = session.getAttribute("user").toString();
       
-      String q1 = "SELECT t.date, s1.name AS 'origin_station', s2.name AS 'destination_station', r.seat_num, r.seat_class, r.date_made, r.total_fare, t.delay ";
+      String q1 = "SELECT t.id, t.date, s1.name AS 'origin_station', s2.name AS 'destination_station', r.seat_num, r.seat_class, r.date_made, r.total_fare, t.delay ";
       String q2 = "FROM reservation r, customer c, trip t , route ro, station s1, s2 ";
       String q3 = "WHERE r.customer_username = c.username AND r.customer_username = '" + customerUsername + "' ";
       String q4 = "AND r.trip_id = t.id ";
@@ -87,10 +87,10 @@
             <td><%= rs.getString("seat_class") %></td>
             <td><%= rs.getDate("date_made") %></td>
             <td><%= String.format("%.2f", rs.getFloat("total_fare")) %></td>
-            <td>
-              <a href="cancelReservation.jsp">Click here to cancel</a>
-            </td>
             <td><%= rs.getInt("delay") %></td>
+            <td>
+              <a href="cancelReservation.jsp?tripId=<%= rs.getInt("id") %>">Click here to cancel</a>
+            </td>
           </tr>
     <%  } %>
   </table>
