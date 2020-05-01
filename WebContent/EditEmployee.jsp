@@ -20,7 +20,7 @@
     
     Statement st = con.createStatement();
     ResultSet rs;
-    rs = st.executeQuery("SELECT * FROM Employees where ssn='" + ssn + "'");
+    rs = st.executeQuery("SELECT * FROM employee where ssn='" + ssn + "'");
 	if (!rs.next()){
 		out.println("No such ssn in Database <a href = 'edit.jsp'> try again </a");				
 	}

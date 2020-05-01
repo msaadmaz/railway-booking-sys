@@ -14,7 +14,7 @@
     
     
     
-    String query = "delete from Employees where ssn = ?";
+    String query = "delete from employee where ssn = ?";
     PreparedStatement statement = con.prepareStatement(query);
     statement.setString(1, ssn);
     statement.execute();

@@ -21,7 +21,7 @@
     Statement st = con.createStatement();
     
     ResultSet rs;
-    rs = st.executeQuery("SELECT * FROM Customer where username='" + username + "'");
+    rs = st.executeQuery("SELECT * FROM customer where username='" + username + "'");
 	if (!rs.next()){
 		out.println("No such username in Database <a href = 'edit.jsp'> try again </a");				
 	}
@@ -30,8 +30,8 @@
 	<ul>
 		<li> Last name is: <%=rs.getString("last_name")%></li>
 		<li> First name is: <%=rs.getString("first_name")%></li>
-		<li> phone number is: <%=rs.getString("phone_num")%></li>
-		<li> Street is: <%=rs.getString("street")%></li>
+		<li> phone number is: <%=rs.getString("phone")%></li>
+		<li> Street is: <%=rs.getString("address")%></li>
 		<li> City is: <%=rs.getString("city")%></li>
 		<li> State is: <%=rs.getString("state")%></li>
 		<li> Zip is: <%=rs.getInt("zip")%></li>

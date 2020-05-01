@@ -25,32 +25,40 @@
 	
 	Statement stmt = con.createStatement();
 	ResultSet rs;
-	
+	boolean isUnique = true;
 	if (!newUsername.equals(originalUsername)){
-		rs = stmt.executeQuery("SELECT * FROM Customer where username = '" + newUsername + "'");
+		rs = stmt.executeQuery("SELECT * FROM customer where username = '" + newUsername + "'");
 		if (rs.next()){
 			out.println("Username already exists <a href='adminMainPage.jsp'>try again</a>");
-			
+			isUnique = false;
 	  		rs.close();
+		    db.closeConnection(con);
 		}
+
 	}
+	if (isUnique){
 	
-	String sql = "Update Customer set last_name=?,first_name=?,phone_num=?,street=?,city=?, state=?,zip=?,email=?,username=?,password=? where username= '"+originalUsername + "'";
+	String sql = "Update customer set username=?, password=?,first_name=?,last_name=?,address=?, city=?,state=?,zip=?,phone=?,email=? where username= '"+originalUsername + "'";
 	PreparedStatement ps = con.prepareStatement(sql);
-	ps.setString(1, lastName);
-    ps.setString(2, firstName);
-    ps.setString(3, phone);
-    ps.setString(4, street);
-    ps.setString(5, city);
-    ps.setString(6, state);
-    ps.setInt(7, zip);
-    ps.setString(8, email);
-    ps.setString(9, newUsername);
-    ps.setString(10, password);
+	ps.setString(1, newUsername);
+    ps.setString(2, password);
+    ps.setString(3, firstName);
+    ps.setString(4, lastName);
+    ps.setString(5, street);
+    ps.setString(6, city);
+    ps.setString(7, state);
+    ps.setInt(8, zip);
+    ps.setString(9, phone);
+    ps.setString(10, email);
+    
     ps.executeUpdate();
+    response.sendRedirect("adminMainPage.jsp");
 
     db.closeConnection(con);
-    response.sendRedirect("adminMainPage.jsp");
+
+
+	}
+
 	 
 %>
 	 

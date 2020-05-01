@@ -32,7 +32,7 @@
 	    
 	    String password = request.getParameter("password");
     			  
-	    if (password.equals("")) {
+	  if (password.equals("")) {
         out.println("You must input a password <a href='createAccountFormForAdmin.jsp'>try again</a>");
         return;
       } else if (password.contains(" ")) {
@@ -40,7 +40,7 @@
      		return;
       } else if (password.length() <= 3) {
     	  out.println("Your password is too short <a href='createAccountFormForAdmin.jsp'>try again</a>");
- 			  return;
+ 		  return;
       }
     			  
       String firstName = request.getParameter("firstName");
@@ -116,7 +116,7 @@
       }
       
       ResultSet rs;
-      rs = stmt.executeQuery("SELECT * FROM Customer where username = '" + username + "'");
+      rs = stmt.executeQuery("SELECT * FROM customer where username = '" + username + "'");
       
       if (rs.next()) {
     	  rs.close();
@@ -124,23 +124,26 @@
         out.println("Username already exists <a href='createAccountFormForAdmin.jsp'>try again</a>");
       } else {
     	  // Make an insert statement for the User table:
-        String insert = "INSERT INTO Customer(last_name, first_name, phone_num, street, city, state, zip, email, username, password)"
+    	String insert = "INSERT INTO customer(username, password, first_name, last_name, address, city, state, zip, phone, email)"
             + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         
         // Create a Prepared SQL statement allowing you to introduce the parameters of the query
         PreparedStatement ps = con.prepareStatement(insert);
 
+       
+        
         // Add parameters of the query. Start with 1, the 0-parameter is the INSERT statement itself
-        ps.setString(1, lastName);
-        ps.setString(2, firstName);
-        ps.setString(3, phone);
-        ps.setString(4, street);
-        ps.setString(5, city);
-        ps.setString(6, state);
-        ps.setInt(7, zip);
-        ps.setString(8, email);
-        ps.setString(9, username);
-        ps.setString(10, password);
+        ps.setString(1, username);
+        ps.setString(2, password);
+        ps.setString(3, firstName);
+        ps.setString(4, lastName);
+        ps.setString(5, street);
+        ps.setString(6, city);
+        ps.setString(7, state);
+        ps.setInt(8, zip);
+        ps.setString(9, phone);
+        ps.setString(10, email);
+        
         
         // Run the query against the DB
         ps.executeUpdate();

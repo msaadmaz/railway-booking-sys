@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Edit</title>
 </head>
 <body>
 	<p>What would you like to do:</p>
@@ -48,7 +48,7 @@
   		<li>Delete Employee
   			<ul>
   				<li> <form action="DeleteEmployee.jsp" method="POST">
-  					 	<input name="ssn" type="text" class="text-input" placeholder="Username" />
+  					 	<input name="ssn" type="text" class="text-input" placeholder="ssn" />
    					  	<button type="submit" class="gray-button">Delete Account</button>
   					 	
   					</form>

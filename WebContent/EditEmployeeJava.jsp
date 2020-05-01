@@ -21,41 +21,43 @@
     Statement stmt = con.createStatement();
 
 	ResultSet rs;
+	boolean isUnique = true;
 	
 	if (!originalUsername.equals(Username)){
-		System.out.println("originalUsername: " + originalUsername);
-		System.out.println("Username: " + Username);
-	    System.out.println("DIFFERENT USERNAMES");
+		
 
-	    rs = stmt.executeQuery("SELECT * FROM Employees where username = '" + Username + "'");
+	    rs = stmt.executeQuery("SELECT * FROM employee where username = '" + Username + "'");
 		if (rs.next()){
 			out.println("Username already exists <a href='adminMainPage.jsp'>try again</a>");
-			
+			isUnique = false;
 	  		rs.close();
 		}
 	}
     else if(!newSSN.equals(originalSSN)) {
-    	rs = stmt.executeQuery("SELECT * FROM Employees where ssn = '" + newSSN + "'");
+    	rs = stmt.executeQuery("SELECT * FROM employee where ssn = '" + newSSN + "'");
     	if (rs.next()){
     		out.println("SSN already exists <a href='adminMainPage.jsp'>try again</a>");
-
+			isUnique = false;
       		rs.close();
     	}
     }
     
     
-    else {
-		String sql = "Update Employees set username=?, password=?, isManager=?, first_name=?, last_name=?,ssn=? where ssn= '"+originalSSN +"'";
+    if(isUnique){
+		String sql = "Update employee set username=?, password=?, ssn=?, first_name=?, last_name=?,is_manager=? where ssn= '"+originalSSN +"'";
 		PreparedStatement ps = con.prepareStatement(sql);
-		ps.setString(1, Username);
-		ps.setString(2, password);
-		ps.setInt(3,0);
-		ps.setString(4, firstName);
-		ps.setString(5, lastName);
-		ps.setString(6,newSSN);
+
+        // Add parameters of the query. Start with 1, the 0-parameter is the INSERT statement itself
+        ps.setString(1, Username);
+        ps.setString(2, password);
+        ps.setString(3, newSSN);
+        ps.setString(4, firstName);
+        ps.setString(5,lastName);
+        ps.setInt(6, 0);
 		ps.executeUpdate();
 
-    	db.closeConnection(con);
    		response.sendRedirect("adminMainPage.jsp");
     }
+	db.closeConnection(con);
+
    %>

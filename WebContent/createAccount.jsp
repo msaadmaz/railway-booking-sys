@@ -124,23 +124,25 @@
         out.println("Username already exists <a href='createAccountForm.jsp'>try again</a>");
       } else {
     	  // Make an insert statement for the User table:
-        String insert = "INSERT INTO Customer(last_name, first_name, phone_num, street, city, state, zip, email, username, password)"
+        String insert = "INSERT INTO Customer(username, password, first_name, last_name, address, city, state, zip, phone, email)"
             + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         
         // Create a Prepared SQL statement allowing you to introduce the parameters of the query
         PreparedStatement ps = con.prepareStatement(insert);
 
+       
+        
         // Add parameters of the query. Start with 1, the 0-parameter is the INSERT statement itself
-        ps.setString(1, lastName);
-        ps.setString(2, firstName);
-        ps.setString(3, phone);
-        ps.setString(4, street);
-        ps.setString(5, city);
-        ps.setString(6, state);
-        ps.setInt(7, zip);
-        ps.setString(8, email);
-        ps.setString(9, username);
-        ps.setString(10, password);
+        ps.setString(1, username);
+        ps.setString(2, password);
+        ps.setString(3, firstName);
+        ps.setString(4, lastName);
+        ps.setString(5, street);
+        ps.setString(6, city);
+        ps.setString(7, state);
+        ps.setInt(8, zip);
+        ps.setString(9, phone);
+        ps.setString(10, email);
         
         // Run the query against the DB
         ps.executeUpdate();

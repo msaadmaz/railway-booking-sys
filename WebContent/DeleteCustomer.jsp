@@ -14,7 +14,7 @@
     
     
     
-    String query = "delete from Customer where username = ?";
+    String query = "delete from customer where username = ?";
     PreparedStatement statement = con.prepareStatement(query);
     statement.setString(1, username);
     statement.execute();

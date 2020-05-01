@@ -7,7 +7,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>Insert title here</title>
+	<title>Admin</title>
 </head>
 <body>
   <h1>Admin Main Page</h1>
@@ -16,16 +16,20 @@
   
   <p>What would you like to do:</p>
   <ol>
-  	<li><a href="edit.jsp">Add, Edit, Delete employee/customer</a></li>
+  	<li><a href="edit.jsp">Add, Edit, Delete employee/customer</a></li><li>
+  	<br>
   	<li>Obtain a sales report for specific month
   		<ul>
   			<li> <form action="SalesReport.jsp" method="POST">
-  				 	<input name="month" type="text" class="text-input" placeholder="month" />
+  				 	<input name="month" type="text" class="text-input" placeholder="month number" />
+   				 	<input name="year" type="text" class="text-input" placeholder="year" />
+  				 	
   				 	<button type="submit" class="gray-button">Get Revenue</button>
   				</form>
   			</li>
   		</ul>
   	</li>
+  	<br>
   	<li>Produce a list of reservations
   		<ul>
   			<li> <form action="TransitTrainReservation.jsp" method="POST">
@@ -34,8 +38,9 @@
   				 	<button type="submit" class="gray-button">Produce list with transit line and train number</button>
   				</form>
   			</li>
+  			<br>
   			<li> <form action="CustomerReservation.jsp" method="POST">
-  				 	<input name="Customer Username" type="text" class="text-input" placeholder="Customer Username" />
+  				 	<input name="Customer name" type="text" class="text-input" placeholder="Customer name" />
   				 	<button type="submit" class="gray-button">Produce list with Customer Username</button>
   				</form>
   			</li>
@@ -43,8 +48,21 @@
   		</ul>
   	
   	</li>
-  	<li><a href="ProduceRevenue.jsp">Produce a list of revenue</a></li>
+  	<br>
+  	<li>Produce a list of revenue
+  		<ul>
+  			<li> <a href = "TransitRevenue.jsp"> By transit Line</a></li>
+  			<br>
+  			<li> <a href="DestinationRevenue.jsp">By Destination</a></li>
+  			<br>
+  			<li> <a href="CustomerRevenue.jsp"> By Customer</a></li>
+  		</ul>
+  	
+  	</li>
+  	<br>
   	<li><a href="BestCustomer.jsp">Find the Best Customer</a></li>
+  	
+  	<br>
   	<li><a href="MostActiveLines.jsp">Find Most Active transit Lines</a></li>
   	
   </ol>

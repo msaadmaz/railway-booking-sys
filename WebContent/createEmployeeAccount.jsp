@@ -63,24 +63,26 @@
       
       
       ResultSet rs;
-      rs = stmt.executeQuery("SELECT * FROM Employees where username = '" + username + "'");
-      
+      rs = stmt.executeQuery("SELECT * FROM employee where username = '" + username + "'");
+      boolean lol = false;
       if (rs.next()) {
-    	  rs.close();
-    	  
-        out.println("Username already exists <a href='createEmployeeAcountForm.jsp'>try again</a>");
+    	    rs.close();
+    	  	lol = true;
+			out.println("Username already exists <a href='createEmployeeAcountForm.jsp'>try again</a>");
+        	return;	
       } 
       ResultSet rs2; 
-      rs2 = stmt.executeQuery("SELECT * FROM Employees where ssn = '" + ssn + "'");
-      if (rs2.next()) {
+      rs2 = stmt.executeQuery("SELECT * FROM employee where ssn = '" + ssn + "'");
+      if (rs2.next() &&!lol) {
     	  rs2.close();
     	  
         out.println("SSN already exists <a href='createEmployeeAcountForm.jsp'>try again</a>");
+        return;
       }
       
       else {
     	  // Make an insert statement for the User table:
-        String insert = "INSERT INTO Employees(username, password, isManager, first_name, last_name, ssn)"
+        String insert = "INSERT INTO employee(username, password, ssn, first_name, last_name, is_manager)"
             + "VALUES (?, ?, ?, ?, ?, ?)";
         
         // Create a Prepared SQL statement allowing you to introduce the parameters of the query
@@ -89,10 +91,10 @@
         // Add parameters of the query. Start with 1, the 0-parameter is the INSERT statement itself
         ps.setString(1, username);
         ps.setString(2, password);
-        ps.setInt(3, 0);
+        ps.setString(3, ssn);
         ps.setString(4, firstName);
         ps.setString(5,lastName);
-        ps.setString(6, ssn);
+        ps.setInt(6, 0);
         
         
         // Run the query against the DB

@@ -11,8 +11,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<p> Most active Transit Lines </p>
+	<p> Destination Revenue </p>
 	<%
+	String transitLine = request.getParameter("Destination");
 	Class.forName("com.mysql.jdbc.Driver");
     
     ApplicationDB db = new ApplicationDB();
@@ -20,35 +21,26 @@
 
     Statement st = con.createStatement();
     ResultSet rs;
-    rs = st.executeQuery("Select r.transit_line_name, count(*) as totals from route r, trip t, reservation s where r.id = t.route_id and t.id = s.trip_id group by r.transit_line_name order by totals desc");
+    rs = st.executeQuery("Select s.name, sum(total_fare)  as totals  from reservation c, station s where c.destination_station = s.id group by s.id order by totals desc");
+    
     if (rs.next()){
 		%>
 		<TABLE border="1">
 		<tr>
-		<td>Most Active Transit Lines</td>
+		<td>Destination Name</td>
+		<td>Revenue Generated</td>
 		</tr>
 		<% 
-		int count = 0;
 		do {
 			%>
 			<TR>
 			<TD><%=rs.getString(1)%></TD>
+			<TD><%=rs.getInt(2)%></TD>
 			</TR>
 			<%
-			count++;
-			if (count==5){
-				break;
-			}
 		}while(rs.next());
-		if (count!=5){
-			out.println("These are all the transit lines");
-		}
-		else {
-			out.println("these are the top 5 transit Lines");
-		}
-		out.println("<a href = 'adminMainPage.jsp'>Go back to main page</a");
+		out.println("<a href = 'adminMainPage.jsp'> Back to main page </a");
 	}
-    
 	
 	else{
 		out.println("There are no transit lines <a href = 'adminMainPage.jsp'> try again </a");				
