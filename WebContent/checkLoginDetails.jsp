@@ -24,6 +24,8 @@
     
     if (rs.next()) {
 	    session.setAttribute("user", username); // the username will be stored in the session
+      System.out.println("setting attributes");
+	    session.setAttribute("ssn", null);
 	    out.println("welcome " + username);
 	    out.println("<a href='logout.jsp'>Log out</a>");
 	    response.sendRedirect("customerMainPage.jsp");

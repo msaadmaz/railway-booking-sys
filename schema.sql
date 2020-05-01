@@ -349,7 +349,7 @@ VALUES  (1, 'How many trains do you maintain?',                                 
         (8, 'This is not a question you just have a very nice website!',            '2020-01-21 17:30:00', 'customer2'),
         (9, 'How can I make a reservation?',                                        '2020-03-28 24:30:00', 'customer3');
 
-CREATE TABLE responds_to (
+CREATE TABLE responds (
     employee_username VARCHAR(20),
     message_id INT NOT NULL,
     text TEXT NOT NULL,
@@ -359,9 +359,27 @@ CREATE TABLE responds_to (
     FOREIGN KEY (message_id) REFERENCES message(id) ON DELETE CASCADE
 );
 
-INSERT INTO responds_to
+INSERT INTO responds
 VALUES  ('test',        1, 'We currently have roughly 20 trains available',                             '2020-03-19 08:00:00'),
         ('test',        2, 'Silly! We never close!',                                                    '2020-02-26 07:15:00'),
         ('test',        3, 'It will take about 1 hour.',                                                '2020-01-08 22:15:00'),
         ('employee1',   4, 'It depends on how you define alone.',                                       '2020-03-24 16:30:00'),
         ('employee2',   5, 'A team of highly-skilled and professional database engineers, of course!',  '2020-03-07 12:00:00');
+
+CREATE TABLE Message (
+    id INT NOT NULL AUTO_INCREMENT,
+    text TEXT NOT NULL,
+    customer_username VARCHAR(20),
+    answered_by VARCHAR(20),
+    answer TEXT,
+    PRIMARY KEY (id),
+    FOREIGN KEY (customer_username) REFERENCES customer(username) ON DELETE SET NULL ON UPDATE CASCADE
+);
+
+CREATE TABLE responds_to (
+    message_id INT NOT NULL,
+    employee_username VARCHAR(20) NOT NULL,
+    PRIMARY KEY (message_id, employee_username),
+    FOREIGN KEY (message_id) REFERENCES Message(id) ON DELETE CASCADE ON UPDATE CASCADE,
+    FOREIGN KEY (employee_username) REFERENCES employee(username) ON DELETE CASCADE ON UPDATE CASCADE
+);

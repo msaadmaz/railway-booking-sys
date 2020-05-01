@@ -16,7 +16,7 @@
   
   <p>What would you like to do:</p>
   <ol>
-  	<li><a href="edit.jsp">Add, Edit, Delete employee/customer</a></li><li>
+  	<li><a href="edit.jsp">Add, Edit, Delete employee/customer</a></li>
   	<br>
   	<li>Obtain a sales report for specific month
   		<ul>

@@ -48,20 +48,29 @@
 			ps2.setString(2, username);
 			ps2.executeUpdate();
 			
+			Statement getMessageIdSt = con.createStatement();
+      String getMessageIdQuery = "SELECT id FROM Message WHERE text = '" + q2a + "';";
+      ResultSet getMessageIdRs = getMessageIdSt.executeQuery(getMessageIdQuery);
+      
+      int messageId = 0;
+      
+      while (getMessageIdRs.next()) {
+        messageId = getMessageIdRs.getInt(1);
+      }
 			
 			// Make an insert statement for the responds_to table:
-		    String insert = "INSERT INTO responds_to(ssn, text)"
+	    String insert = "INSERT INTO responds_to(message_id, employee_username)"
 		        + "VALUES (?, ?)";
 						
 		 	// Create a Prepared SQL statement allowing you to introduce the parameters of the query
-		    PreparedStatement ps = con.prepareStatement(insert);
+	    PreparedStatement ps = con.prepareStatement(insert);
 						
 			// Add parameters of the query. Start with 1, the 0-parameter is the INSERT statement itself
-		    ps.setString(1, ssn);
-			ps.setString(2, q2a);
+	    ps.setInt(1, messageId);
+			ps.setString(2, username);
 			
 			// Run the query against the DB
-	        ps.executeUpdate();
+      ps.executeUpdate();
 			
 			//close everything
 			rs.close();

@@ -47,7 +47,7 @@
   <h1>Hello, <%= session.getAttribute("user") %>!</h1>
   
 	<a href="searchTrainSchedules.jsp" class="gray-button">Search for train schedules</a>
-	<a href="viewMessages.jsp" class="gray-button">View messages</a>
+	<a href="customerService.jsp" class="gray-button">Customer Service</a>
   
   <h2>My Reservations</h2>
   

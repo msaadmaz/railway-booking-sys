@@ -25,7 +25,7 @@
 	    int yearNum = Integer.parseInt(year);
 	    ResultSet rs;
 	    ;
-	    rs = stmt.executeQuery("select SUM(total_fare) from reservation where month(date_made)="+ monthNum +" and year(date_made)=" + year);
+	    rs = stmt.executeQuery("SELECT SUM(r.total_fare) FROM reservation r, trip t WHERE r.trip_id = t.id AND month(t.date)="+ monthNum +" AND year(t.date)=" + year);
 	    if (!rs.next()) {
 	    	rs.close();
 	    	  

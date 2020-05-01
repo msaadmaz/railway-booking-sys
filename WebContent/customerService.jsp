@@ -14,10 +14,15 @@
   		//get the username of the current user and also check to see if they are an employee
   		//if they are an employee they will be allowed to answer questions
   		String username = session.getAttribute("user").toString();
-		boolean isEmployee = true;
+  		boolean isEmployee = true;
+      System.out.println("dfhdg");
+      
   		if(session.getAttribute("ssn") == null ){
+        System.out.println("customer");
   			isEmployee = false;
   		}
+      
+      System.out.println(session.getAttribute("ssn"));
   	%>
 	<div class="topnav">
 		<a class="active" href="customerMainPage.jsp">Home</a>
@@ -51,14 +56,14 @@
 		
 		Class.forName("com.mysql.jdbc.Driver");
 	    
-	    ApplicationDB db = new ApplicationDB();
-	    Connection con = db.getConnection();
+    ApplicationDB db = new ApplicationDB();
+    Connection con = db.getConnection();
 		
 		Statement getQuestions = con.createStatement();
 		Statement getAnswers = con.createStatement();
 		
 		ResultSet rs, rs2;
-	    rs = getQuestions.executeQuery("SELECT text, answer FROM Message");
+	    rs = getQuestions.executeQuery("SELECT text, answer FROM Message;");
 	    
 	    while(rs.next()){
 	    	questions.add(rs.getString(1));
@@ -66,16 +71,23 @@
 	    }
 	    
 	    for(int i = 0; i < questions.size(); i++){
-	    	if( i == 0 ){
+        
+        out.println(questions.get(i) + " The answer is: " + answers.get(i));
+        out.println("<br>");
+        
+	    	/*
+        if( i == 0 ){
 	    		continue;
 	    	} else {
+          System.out.println("testetestd");
 	    		out.println(questions.get(i) + " The answer is: " + answers.get(i));
 		    	out.println("<br>");
 	    	} 
+        */
 	    }
 	    rs.close();
 	    getQuestions.close();
-        db.closeConnection(con);
+      db.closeConnection(con);
 	%>
 	
 	<% 

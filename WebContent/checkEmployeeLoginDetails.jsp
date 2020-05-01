@@ -27,7 +27,7 @@
 	    out.println("<a href='logout.jsp'>Log out</a>");
 	    
 	    ResultSet rs2;
-	    rs2 = st2.executeQuery("SELECT e.ssn FROM Employees e where e.username='" + username + "' AND e.password='" + password + "'");
+	    rs2 = st2.executeQuery("SELECT e.ssn FROM employee e where e.username='" + username + "' AND e.password='" + password + "'");
 	    
 	    //to be able to identify Employees from customers on mutual pages
 	    while( rs2.next()){
