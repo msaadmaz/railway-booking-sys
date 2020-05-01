@@ -23,19 +23,21 @@
       <br>
       
       <p>Round trip?</p>
-      <input type="radio" id="yes-disabled" name="round-trip" value="yes-round-trip" checked>
-      <label for="yes-round-trip">Yes</label>
       <input type="radio" id="no-disabled" name="round-trip" value="no-round-trip">
       <label for="no-round-trip">No</label>
+      <input type="radio" id="yes-disabled" name="round-trip" value="yes-round-trip" checked>
+      <label for="yes-round-trip">Yes</label>
       <br>
       
-      <p>Reservation duration</p>
-      <input type="radio" id="day" name="duration" value="day" checked>
+      <p>Reservation</p>
+      <input type="radio" id="day" name="reservation" value="one-way" checked>
       <label for="day">Day</label>
-      <input type="radio" id="week" name="duration" value="week">
-      <label for="week">Week</label>
-      <input type="radio" id="month" name="duration" value="month">
-      <label for="month">Month</label>
+      <input type="radio" id="day" name="reservation" value="round-trip" checked>
+      <label for="round-trip">Round Trip</label>
+      <input type="radio" id="week" name="reservation" value="week">
+      <label for="week">Week Pass</label>
+      <input type="radio" id="month" name="reservation" value="month">
+      <label for="month">Month Pass</label>
       <br>
       
       <p>Seat Class</p>
