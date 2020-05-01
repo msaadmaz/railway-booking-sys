@@ -58,14 +58,6 @@
   %>
 
   <h2>Search for train schedules</h2>
-  
-  <form action="" method="POST">
-    <label for="origin-station">Origin Station</label>
-    <input id="origin-station" name=origin-station type="text" class="text-input" />
-    <br />
-    
-    <button type="submit" class="gray-button">Submit</button>
-  </form>
 
   <table>
     <tr>
@@ -93,6 +85,9 @@
               <a href="viewStops.jsp?routeId=<%= rs.getInt("route_id") %>">View Route and Stops</a>
             </td>
             <td><%= rs.getInt("delay") %></td>
+            <td>
+              <a href="createReservationForm.jsp?tripId=<%= rs.getInt("id") %>">Book</a>
+            </td>
           </tr>
     <%  } %>
   </table>

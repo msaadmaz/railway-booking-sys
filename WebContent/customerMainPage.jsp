@@ -41,9 +41,10 @@
       String q5 = "AND t.route_id = ro.id ";
       String q6 = "AND ro.origin_station_id = s1.id ";
       String q7 = "AND ro.destination_station_id = s2.id ";
-      String q8 = "GROUP BY t.date ASC;";
+      String q8 = "GROUP BY r.res_num ";
+      String q9 = "ORDER BY t.date ASC;";
       
-      ResultSet rs = st.executeQuery(q1 + q2 + q3 + q4 + q5 + q6 + q7 + q8);
+      ResultSet rs = st.executeQuery(q1 + q2 + q3 + q4 + q5 + q6 + q7 + q8 + q9);
       
       Statement st2 = con.createStatement();
       

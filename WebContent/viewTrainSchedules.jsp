@@ -53,7 +53,6 @@
         
         // TODO: query only future trips, exclude past
         
-        
         String s2 = "SELECT t.id, r.transit_line_name, r.depart_time, s1.name AS 'origin_station', s2.name AS 'destination_station', r.arrival_time, t.date, r.id AS route_id ";
         String s3 = "FROM trip t, route r, station s1, s2 ";
         String s4 = "WHERE t.route_id = r.id ";
@@ -81,6 +80,7 @@
         <th>Destination Station</th>
         <th>Arrival Time</th>
         <th>View Route</th>
+        <th>Reserve</th>
       </tr>
       
       <%  while (rs.next()) { %>
@@ -94,6 +94,9 @@
               <td><%= rs.getString("arrival_time") %></td>
               <td>
                 <a href="viewStops.jsp?routeId=<%= rs.getInt("route_id") %>">View Route and Stops</a>
+              </td>
+              <td>
+                <a href="createReservationForm.jsp?tripId=<%= rs.getInt("id") %>">Book</a>
               </td>
             </tr>
       <%  } %>

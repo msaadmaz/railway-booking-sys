@@ -28,6 +28,11 @@
 	    session.setAttribute("ssn", null);
 	    out.println("welcome " + username);
 	    out.println("<a href='logout.jsp'>Log out</a>");
+      
+	    rs.close();
+	    st.close();
+	    db.closeConnection(con);
+      
 	    response.sendRedirect("customerMainPage.jsp");
     } else {
    	  out.println("Invalid password <a href='login.jsp'>try again</a>");
@@ -35,5 +40,5 @@
     
     rs.close();
     st.close();
-    con.close();
+    db.closeConnection(con);
 %>
