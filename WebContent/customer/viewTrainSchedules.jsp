@@ -19,6 +19,7 @@
 <html>
   <head>
     <title>View Schedules</title>
+    
     <link rel="stylesheet" type="text/css" href="../css/main.css">
     
     <style>
@@ -90,6 +91,11 @@
         String showAllTripsQuery = s2 + s3 + s4 + s5 + s6 + s7 + s8 + s9 + order;
         ResultSet rs = st.executeQuery(showAllTripsQuery);
     %>
+    
+    <div class="topnav">
+      <h1 class="active jjmt">JJMT Railways</h1>
+      <a class="active logout" href="logout.jsp">Logout</a>
+    </div>
   
     <h2>Train Schedules</h2>
     

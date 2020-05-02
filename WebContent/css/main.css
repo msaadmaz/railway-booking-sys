@@ -65,3 +65,13 @@
 .alert {
   color: red;
 }
+
+.jjmt {
+  text-align: left;
+}
+
+.logout {
+  position: absolute;
+  right: 0px;
+  top: 0px;
+}

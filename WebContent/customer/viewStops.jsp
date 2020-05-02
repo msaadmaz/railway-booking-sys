@@ -19,6 +19,7 @@
 <html>
 <head>
   <title>View Schedules</title>
+  
   <link rel="stylesheet" type="text/css" href="../css/main.css">
   
   <style>
@@ -57,6 +58,11 @@
       
       ResultSet rs = st.executeQuery(s1 + s2 + s3 + routeId + s4 + s5);
   %>
+  
+  <div class="topnav">
+    <h1 class="active jjmt">JJMT Railways</h1>
+    <a class="active logout" href="logout.jsp">Logout</a>
+  </div>
 
   <h2>Stops</h2>
 

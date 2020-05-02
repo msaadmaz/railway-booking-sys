@@ -19,6 +19,7 @@
 <html>
   <head>
     <title>Search Train Schedules</title>
+    
     <link rel="stylesheet" type="text/css" href="../css/main.css">
   </head>
   
@@ -35,6 +36,11 @@
         ResultSet rs1 = st1.executeQuery(query);
         ResultSet rs2 = st2.executeQuery(query);
     %>
+    
+    <div class="topnav">
+      <h1 class="active jjmt">JJMT Railways</h1>
+      <a class="active logout" href="logout.jsp">Logout</a>
+    </div>
       
     <h2>Search Train Schedules</h2>
     

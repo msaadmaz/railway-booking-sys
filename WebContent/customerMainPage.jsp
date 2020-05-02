@@ -9,6 +9,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Home</title>
+  
   <link rel="stylesheet" type="text/css" href="css/main.css">
   
   <style>
@@ -22,6 +23,11 @@
   </style>
 </head>
 <body>
+  <div class="topnav">
+    <h1 class="active jjmt">JJMT Railways</h1>
+    <a class="active logout" href="logout.jsp">Logout</a>
+  </div>
+
   <%  Class.forName("com.mysql.jdbc.Driver");
       ApplicationDB db = new ApplicationDB();
       Connection con = db.getConnection();
