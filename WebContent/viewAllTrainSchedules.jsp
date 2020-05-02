@@ -90,7 +90,7 @@
       <a href="viewAllTrainSchedules.jsp?sort=departure">Departure Time</a>
       <a href="viewAllTrainSchedules.jsp?sort=origin">Origin</a>
       <a href="viewAllTrainSchedules.jsp?sort=destination">Destination</a>
-      <a href="viewAllTrainSchedules.jsp?sort=fare">Standard Fare</a>
+      <a href="viewAllTrainSchedules.jsp?sort=fare">Fare</a>
     </div>
     
     <br />
@@ -107,7 +107,7 @@
         <th>Standard Fare</th>
         <th>Delay</th>
         <th>View Route</th>
-        <th>Book</th>
+        <th>Reserve</th>
       </tr>
       
       <%  while (rs.next()) { %>
@@ -121,7 +121,7 @@
               <td><%= rs.getString("arrival_time") %></td>
               <td><%= rs.getFloat("standard_fare") %></td>
               <td><%= rs.getInt("delay") %></td>
-              <td><a href="viewStops.jsp?routeId=<%= rs.getInt("route_id") %>">View Route and Stops</a></td>
+              <td><a href="viewStops.jsp?routeId=<%= rs.getInt("route_id") %>">View Route</a></td>
               <td><a href="createReservationForm.jsp?tripId=<%= rs.getInt("id") %>">Click here to book</a></td>
             </tr>
       <%  } %>

@@ -1,8 +1,12 @@
 # railway-booking-system
+
 CS 336 Final Project
 For private use only - do not distribute
 
-Group Members:
+## Group Members:
+
+Group 8
+
 Jason Mustafa (II. Browsing and search functionality, III. Reservations)
 Muhammad Mazhar (IV. Messaging functions)
 Taha Shaikh (V. Admin functions)
@@ -13,7 +17,7 @@ Jeremy did not respond to our messages on time so we did not submit customer rep
 
 Files:
 
-Jason Mustafa
+Jason Mustafa:
 customerMainPage.jsp
 searchTrainSchedules.jsp
 viewTrainSchedules.jsp
@@ -22,14 +26,35 @@ createReservationForm.jsp
 createReservation.jsp
 cancelReservation.jsp
 
-Muhammad Mazhar
+Muhammad Mazhar:
 customerService.jsp
 createMessage.jsp
 answerQuestion.jsp
 customerMainPage.jsp (alert functionality)
 
 Taha Shaikh:
+adminMainPage
+BestCustomer
+checkEmployeeLoginDetails
+CreateAccountForAdmin
+CreateAccountFormForAdmin
+CreateEmployeeAccount
+CreateEmployeeAccountForm
+CustomerReservation
+CustomerRevenue,DeleteCustomer
+DeleteEmployee
+DestinationRevenue
+edit
+EditAccountJava
+EditCustomer
+EditEmployee
+EditEmployeeJava
+MostActiveLines
+SalesReport
+TransitRevenue
+TransitTrainReservation
 
+## Usage
 
 URL:
 http://ec2-3-17-176-139.us-east-2.compute.amazonaws.com:8080/railway-booking-system/
