@@ -24,6 +24,7 @@
 	if (!rs.next()){
 		out.println("No such ssn in Database <a href = 'edit.jsp'> try again </a");				
 	}
+	else {
 	String username =rs.getString("username");
 	%>
 	<p> Here is the Employee Data</p>
@@ -56,6 +57,12 @@
 		
 		<button type="submit" class="gray-button">Edit Account</button>
 	</form>
+	<%
+	}
+	%>
+	</body>
+	</html>
+	
 		
 		
 		
