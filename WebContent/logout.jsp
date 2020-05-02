@@ -3,5 +3,5 @@
 	session.invalidate();
 
   // redirects back to login page
-	response.sendRedirect("login.jsp");
+	response.sendRedirect(request.getContextPath() + "/login.jsp");
 %>

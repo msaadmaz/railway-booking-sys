@@ -22,22 +22,25 @@
         rs = st.executeQuery("SELECT * FROM reservation WHERE customer_username = '" + username + "' AND trip_id = " + tripId + ";");
         
         if (rs.next()) {
-          //DELETE FROM table_name
-          //WHERE condition;
-          
           String delete = "DELETE FROM reservation WHERE customer_username = '" + username + "' AND trip_id = " + tripId + ";";
           
           PreparedStatement st2 = con.prepareStatement(delete);
           st2.execute();
           
           System.out.println("reservation deleted");
-        }
+    %>
+    
+    <a href="../customerMainPage.jsp">Home</a>
+    
+    <%  }
         
         rs.close();
         st.close();
         db.closeConnection(con);
         
-        response.sendRedirect("customerMainPage.jsp");
+        System.out.println("cancel reservation failed");
+        
+        response.sendRedirect(request.getContextPath() + "/customerMainPage.jsp");
     %>
   </body>
 </html>

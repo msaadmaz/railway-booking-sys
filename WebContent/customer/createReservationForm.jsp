@@ -7,7 +7,7 @@
 <html>
   <head>
     <title>JJMT Railways</title>
-    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="../css/main.css">
   </head>
   
   <body>
@@ -15,24 +15,17 @@
       <input name="age" type="text" class="text-input" placeholder="Age" />
       <br>
       
-      <p>Are you disabled?</p>
+      <p>Do you have a disability?</p>
       <input type="radio" id="no-disabled" name="disabled" value="no-disabled" checked>
       <label for="no-disabled">No</label>
       <input type="radio" id="yes-disabled" name="disabled" value="yes-disabled">
       <label for="yes-disabled">Yes</label>
       <br>
       
-      <p>Round trip?</p>
-      <input type="radio" id="no-disabled" name="round-trip" value="no-round-trip">
-      <label for="no-round-trip">No</label>
-      <input type="radio" id="yes-disabled" name="round-trip" value="yes-round-trip" checked>
-      <label for="yes-round-trip">Yes</label>
-      <br>
-      
       <p>Reservation</p>
       <input type="radio" id="day" name="reservation" value="one-way" checked>
       <label for="day">Day</label>
-      <input type="radio" id="day" name="reservation" value="round-trip" checked>
+      <input type="radio" id="day" name="reservation" value="round-trip">
       <label for="round-trip">Round Trip</label>
       <input type="radio" id="week" name="reservation" value="week">
       <label for="week">Week Pass</label>
@@ -49,7 +42,7 @@
       <label for="second">Second</label>
       <br>
       
-      <button type="submit" class="gray-button">Create Account</button>
+      <button type="submit" class="gray-button">Create Reservation</button>
     </form>
   </body>
 </html>

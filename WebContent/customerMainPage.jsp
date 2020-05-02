@@ -60,7 +60,7 @@
   <%  }
   %>
   
-	<a href="searchTrainSchedules.jsp" class="gray-button">Search for train schedules</a>
+	<a href="customer/searchTrainSchedules.jsp" class="gray-button">Search for train schedules</a>
 	<a href="customerService.jsp" class="gray-button">Customer Service</a>
   
   <h2>My Reservations</h2>
@@ -89,7 +89,7 @@
             <td><%= String.format("%.2f", rs.getFloat("total_fare")) %></td>
             <td><%= rs.getInt("delay") %></td>
             <td>
-              <a href="cancelReservation.jsp?tripId=<%= rs.getInt("id") %>">Click here to cancel</a>
+              <a href="customer/cancelReservation.jsp?tripId=<%= rs.getInt("id") %>">Click here to cancel</a>
             </td>
           </tr>
     <%  } %>

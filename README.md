@@ -12,47 +12,50 @@ Muhammad Mazhar (IV. Messaging functions)
 Taha Shaikh (V. Admin functions)
 Jeremy Desmond (VI. Customer representative)
 
-We would like our parts of the project graded individually.
+We would like our parts of the project graded individually/separately.
 Jeremy did not respond to our messages on time so we did not submit customer representative functions, because that was the part he was responsible for.
 
 Files:
 
 Jason Mustafa:
-customerMainPage.jsp
-searchTrainSchedules.jsp
-viewTrainSchedules.jsp
-viewAllTrainSchedules.jsp
-createReservationForm.jsp
-createReservation.jsp
-cancelReservation.jsp
+    customerMainPage.jsp
+    searchTrainSchedules.jsp
+    viewTrainSchedules.jsp
+    viewAllTrainSchedules.jsp
+    viewStops.jsp
+    createReservationForm.jsp
+    createReservation.jsp
+    cancelReservation.jsp
 
 Muhammad Mazhar:
-customerService.jsp
-createMessage.jsp
-answerQuestion.jsp
-customerMainPage.jsp (alert functionality)
+    customerService.jsp
+    createMessage.jsp
+    answerQuestion.jsp
+    searchQuestion.jsp
+    customerMainPage.jsp (alert functionality)
 
 Taha Shaikh:
-adminMainPage
-BestCustomer
-checkEmployeeLoginDetails
-CreateAccountForAdmin
-CreateAccountFormForAdmin
-CreateEmployeeAccount
-CreateEmployeeAccountForm
-CustomerReservation
-CustomerRevenue,DeleteCustomer
-DeleteEmployee
-DestinationRevenue
-edit
-EditAccountJava
-EditCustomer
-EditEmployee
-EditEmployeeJava
-MostActiveLines
-SalesReport
-TransitRevenue
-TransitTrainReservation
+    adminMainPage.jsp
+    BestCustomer.jsp
+    checkEmployeeLoginDetails.jsp
+    CreateAccountForAdmin.jsp
+    CreateAccountFormForAdmin.jsp
+    CreateEmployeeAccount.jsp
+    CreateEmployeeAccountForm.jsp
+    CustomerReservation.jsp
+    CustomerRevenue.jsp
+    DeleteCustomer.jsp
+    DeleteEmployee.jsp
+    DestinationRevenue.jsp
+    edit.jsp
+    EditAccountJava.jsp
+    EditCustomer.jsp
+    EditEmployee.jsp
+    EditEmployeeJava.jsp
+    MostActiveLines.jsp
+    SalesReport.jsp
+    TransitRevenue.jsp
+    TransitTrainReservation.jsp
 
 ## Usage
 
@@ -74,3 +77,7 @@ password: test
 admin account
 username: admin
 password: admin
+
+customer representative account
+username: JAH
+password: JAHJAH

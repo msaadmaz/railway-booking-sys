@@ -33,10 +33,8 @@
           
           out.println("Reservation already exists <a href='searchTrainSchedules.jsp'>try again</a>");
         } else {
-          System.out.println("sjfiodhgodoghiodgh");
-          
-          String insert = "INSERT INTO reservation(customer_username, trip_id, origin_station, destination_station, total_fare, seat_num, seat_class, date_made, booking_fee, employee_username)"
-              + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+          String insert = "INSERT INTO reservation(customer_username, trip_id, origin_station, destination_station, total_fare, seat_num, seat_class, date_made, booking_fee)"
+              + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
           
           PreparedStatement ps = con.prepareStatement(insert);
           
@@ -46,22 +44,27 @@
           ResultSet rs2 = st2.executeQuery(baseFareQuery);
           
           float standardFare = 0;
-          float bookingFee = (float) 2.0;
+          float bookingFee = 2;
+          float adj = 0;
           
           if (rs2.next()) {
             standardFare = rs2.getFloat("standard_fare");
           }
           
-          if (age <= 12 || age >= 65) {
-            standardFare = standardFare * ((float) 0.85);
+          // discount if child or disabled
+          if (age <= 12 || age >= 65 || isDisabled.equals("yes-disabled")) {
+            adj -= standardFare * ((float) 0.15);
             bookingFee = 0;
           }
           
-          // TODO: seat class changes
+          // price increase if higher class seat
+          if (seatClass.equals("SECOND")) {
+            adj += standardFare * ((float) 0.1);
+          } else if (seatClass.equals("FIRST")) {
+            adj += standardFare * ((float) 0.2);
+          }
           
-          float totalFare = (float) standardFare + bookingFee;
-          
-          System.out.println(totalFare);
+          float totalFare = (float) standardFare + bookingFee + adj;
           
           ps.setString(1, username);
           ps.setInt(2, tripId);
@@ -72,7 +75,6 @@
           ps.setString(7, seatClass);
           ps.setDate(8, new java.sql.Date(Calendar.getInstance().getTime().getTime()));
           ps.setFloat(9, bookingFee);
-          ps.setString(10, "admin");
           
           // Run the query against the DB
           ps.executeUpdate();
@@ -80,7 +82,7 @@
         
         st.close();
         db.closeConnection(con);
-        response.sendRedirect("customerMainPage.jsp");
+        response.sendRedirect(request.getContextPath() + "/customerMainPage.jsp");
     %>
   </body>
 </html>

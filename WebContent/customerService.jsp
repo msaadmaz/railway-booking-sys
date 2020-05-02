@@ -109,12 +109,13 @@
   <br>
   
   <%  Statement delaySt = con.createStatement();
-      ResultSet delayRs = delaySt.executeQuery("SELECT t.delay, r.transit_line_name, r.arrival_time, r.depart_time FROM trip t, route r WHERE t.route_id = r.id AND t.delay > 0 GROUP BY t.id;");
+      ResultSet delayRs = delaySt.executeQuery("SELECT t.delay, t.date, r.transit_line_name, r.arrival_time, r.depart_time FROM trip t, route r WHERE t.route_id = r.id AND t.delay > 0 GROUP BY t.id;");
   %>
   
       <table>
       <tr>
         <th>Transit Line</th>
+        <th>Date</th>
         <th>Arrival Time</th>
         <th>Departure Time</th>
         <th>Delay</th>
@@ -123,8 +124,9 @@
       <%  while (delayRs.next()) { %>
             <tr>
               <td><%= delayRs.getString("transit_line_name") %></td>
-              <td><%= delayRs.getDate("arrival_time") %></td>
-              <td><%= delayRs.getString("depart_time") %></td>
+              <td><%= delayRs.getDate("date") %></td>
+              <td><%= delayRs.getTime("arrival_time") %></td>
+              <td><%= delayRs.getTime("depart_time") %></td>
               <td><%= delayRs.getInt("delay") %></td>
             </tr>
       <%  } %>

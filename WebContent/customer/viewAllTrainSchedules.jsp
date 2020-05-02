@@ -19,7 +19,7 @@
 <html>
   <head>
     <title>All Schedules</title>
-    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="../css/main.css">
     
     <style>
       table, th, td {
