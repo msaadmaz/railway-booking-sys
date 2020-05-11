@@ -80,8 +80,8 @@
       <th>Class</th>
       <th>Date Booked</th>
       <th>Total Fare</th>
-      <th>Cancel</th>
       <th>Delay</th>
+      <th>Cancel</th>
     </tr>
     
     <%  while (rs.next()) { %>

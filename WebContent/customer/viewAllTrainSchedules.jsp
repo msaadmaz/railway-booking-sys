@@ -84,7 +84,7 @@
     
     <div class="topnav">
       <h1 class="active jjmt">JJMT Railways</h1>
-      <a class="active logout" href="logout.jsp">Logout</a>
+      <a class="active logout" href="../logout.jsp">Logout</a>
     </div>
   
     <h2>All Train Schedules</h2>

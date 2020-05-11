@@ -61,7 +61,7 @@
   
   <div class="topnav">
     <h1 class="active jjmt">JJMT Railways</h1>
-    <a class="active logout" href="logout.jsp">Logout</a>
+    <a class="active logout" href="../logout.jsp">Logout</a>
   </div>
 
   <h2>Stops</h2>
@@ -76,8 +76,8 @@
     <%  while (rs.next()) { %>
           <tr>
             <td><%= rs.getString("name") %></td>
-            <td><%= formatTime(rs.getString("arrival_time")) %></td>
-            <td><%= formatTime(rs.getString("departure_time")) %></td>
+            <td><%= rs.getTime("arrival_time") %></td>
+            <td><%= rs.getTime("departure_time") %></td>
           </tr>
     <%  } %>
   </table>
@@ -87,14 +87,6 @@
       st2.close();
       st.close();
       con.close();
-  %>
-  
-  <%! private static String formatTime(String inputDate) {
-        DateTimeFormatter inputFormat = DateTimeFormatter.ofPattern("HH:mm:ss", Locale.US);
-        DateTimeFormatter outputFormat = DateTimeFormatter.ofPattern("hh:mm a", Locale.US);
-        
-        return LocalTime.parse(inputDate, inputFormat).format(outputFormat);
-      }
   %>
 </body>
 </html>
