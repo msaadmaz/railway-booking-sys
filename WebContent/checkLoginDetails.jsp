@@ -8,9 +8,9 @@
 <%@ page import="javax.servlet.http.*,javax.servlet.*"%>
 
 <%
-		// Get parameters from login.jsp
-		String username = request.getParameter("username");
-		String password = request.getParameter("password");
+	// Get parameters from login.jsp
+	String username = request.getParameter("username");
+	String password = request.getParameter("password");
     
     Class.forName("com.mysql.jdbc.Driver");
     
@@ -24,7 +24,7 @@
     
     if (rs.next()) {
 	    session.setAttribute("user", username); // the username will be stored in the session
-      System.out.println("setting attributes");
+      	System.out.println("DEBUG checkLoginDetails -> setting attributes");
 	    session.setAttribute("ssn", null);
 	    out.println("welcome " + username);
 	    out.println("<a href='logout.jsp'>Log out</a>");

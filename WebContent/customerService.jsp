@@ -15,14 +15,18 @@
   		//if they are an employee they will be allowed to answer questions
   		String username = session.getAttribute("user").toString();
   		boolean isEmployee = true;
-      System.out.println("dfhdg");
+      	System.out.println("Customer Service DEBUG");
       
-  		if(session.getAttribute("ssn") == null ){
-        System.out.println("customer");
+  		if(session.getAttribute("ssn") == null )
+  		{
+        	System.out.println("Customer Service Status: customer");
   			isEmployee = false;
   		}
-      
-      System.out.println(session.getAttribute("ssn"));
+  		else
+  		{
+      		System.out.println("Customer Service Status: employee\nSSN: " + session.getAttribute("ssn"));
+  		}
+  		System.out.println("END Customer Service DEBUG");
   	%>
 	<div class="topnav">
 		<a class="active" href="customerMainPage.jsp">Home</a>

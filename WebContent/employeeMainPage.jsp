@@ -7,18 +7,36 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>Insert title here</title>
+	<title>Employee Main Page</title>
+  
+  <link rel="stylesheet" type="text/css" href="css/main.css">
+  
+  <style>
+    table, th, td {
+      border: 1px solid black;
+    }
+    
+    th, td {
+      padding: 5px;
+    }
+  </style>
 </head>
 <body>
-  <h1>User Main Page</h1>
-  <p>Congratulations, you have logged in!</p>
+ <div class="topnav">
+    <h1 class="active jjmt">JJMT Railways</h1>
+    <a class="active logout" href="logout.jsp">Logout</a>
+  </div>
+  <h1>Employee Main Page</h1>
   <br>
   
+  <p> User: <%= session.getAttribute("user") %></p>
   <p>What would you like to do:</p>
   <ol>
-  	<li><a href="browse.jsp">Browse for train schedules</a></li>
-  	<li><a href="makeCancelReservation.jsp">Create or Cancel Reservation</a></li>
+  	<li><a href="Employee_Browse_Schedule.jsp">Browse Train Schedules</a></li>
+  	<li><a href="Employee_Browse_Customers.jsp">Browse Customer Reservations</a></li>
+  	<li><a href="Employee_Customer_Lookup.jsp">Manage Customer Reservations</a></li>
   	<li><a href="customerService.jsp">Customer Service</a></li>
+  	<li><a href="logout.jsp">Log Out</a></li>
   </ol>
   
 </body>
